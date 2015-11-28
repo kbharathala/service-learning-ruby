@@ -1,14 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @user.name %>
+  <strong>Hours:</strong><br>
+  <tbody>
+  	<% Service.all.each do |service| %>
+      <% if service.user_id == @user.id %>
+        <tr>
+          <td><%= service.place %></td>
+          <td><%= service.hours %></td>
+          <td><%= link_to 'Show', service %></td>
+          <td><%= link_to 'Edit', edit_status_path(service) %></td>
+          <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        </tr> <br>
+      <% else %>
+        <tr>
+          <td><%= service.place %></td>
+          <td><%= link_to 'Show', service %></td>
+        </tr> <br>
+      <% end %>
+    <% end %>
 </p>
 
-<p>
-  <strong>Hours:</strong>
-  <%= @user.hours %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Edit Profile', edit_user_path(@user) %> |
+<%= link_to 'Add Service', '/services/new' %>
