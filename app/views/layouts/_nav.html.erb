@@ -1,7 +1,7 @@
 <nav class="nav-banner">
 
   <% if current_user %>
-  	Hi <%= current_user.name %> <%= link_to("Log out", '/logout', method: :delete) %>
+  	Hi <%= current_user.namef %> <%= link_to("Log out", '/logout', method: :delete) %>
   <% else %>
   	<%= link_to 'Log in', '/login' %> <%= link_to 'Sign up', '/users/new' %>
   <% end %>

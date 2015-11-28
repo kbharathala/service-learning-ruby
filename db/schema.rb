@@ -15,19 +15,23 @@ ActiveRecord::Schema.define(version: 20151128013151) do
 
   create_table "services", force: :cascade do |t|
     t.string   "place"
+    t.string   "description"
     t.float    "hours"
+    t.date     "date"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.integer  "student_id"
     t.float    "hours"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "graduatingyear"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
