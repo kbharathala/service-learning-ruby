@@ -1,25 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Hours:</strong><br>
+  <table class="table">
   <tbody>
+    <tr>
+      <td> Place </td>
+      <td> Hours </td><br>
   	<% Service.all.each do |service| %>
       <% if service.user_id == @user.id %>
         <tr>
-          <td><%= service.place %></td>
+          <td><%= link_to("#{service.place}", service)%></td>
           <td><%= service.hours %></td>
-          <td><%= link_to 'Show', service %></td>
-          <td><%= link_to 'Edit', edit_status_path(service) %></td>
-          <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-        </tr> <br>
-      <% else %>
-        <tr>
-          <td><%= service.place %></td>
-          <td><%= link_to 'Show', service %></td>
         </tr> <br>
       <% end %>
     <% end %>
+  </table>
 </p>
 
-<%= link_to 'Edit Profile', edit_user_path(@user) %> |
 <%= link_to 'Add Service', '/services/new' %>

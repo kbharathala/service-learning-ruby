@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     @user.hours = 0
@@ -36,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
