@@ -24,8 +24,10 @@ class ServicesController < ApplicationController
     @service = Service.new(service_params)
     @user = current_user
     @service.user_id = @user.id
+    @user.hours = @user.hours + @service.hours
 
     if @service.save
+      @user.save
       redirect_to @user, notice: 'Service was successfully created.'
     else
       render :new
@@ -45,6 +47,8 @@ class ServicesController < ApplicationController
   def destroy
     @service.destroy
     @user = current_user
+    @user.hours = @user.hours - @service.hours
+    @user.save
     redirect_to @user, notice: 'Service was successfully destroyed.'
   end
 

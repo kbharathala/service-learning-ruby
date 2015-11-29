@@ -4,8 +4,9 @@
   <table class="table">
   <tbody>
     <tr>
-      <td> Place </td>
-      <td> Hours </td><br>
+      <td> <strong> Place </strong> </td>
+      <td> <strong> Hours </strong> </td>
+    </tr> <br>
   	<% Service.all.each do |service| %>
       <% if service.user_id == @user.id %>
         <tr>
@@ -14,7 +15,10 @@
         </tr> <br>
       <% end %>
     <% end %>
+      <td> <strong> Total </strong> </td>
+      <td> <strong> <%="#{@user.hours}" %> </strong> </td> <br>
+
   </table>
 </p>
 
-<%= link_to 'Add Service', '/services/new' %>
+<td><%= link_to 'Add Service', '/services/new' %></td>
