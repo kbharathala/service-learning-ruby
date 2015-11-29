@@ -34,7 +34,7 @@ class ServicesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /services/1
+  # PATCH/PUT/services/1
   def update
     if @service.update(service_params)
       redirect_to @service, notice: 'Service was successfully updated.'

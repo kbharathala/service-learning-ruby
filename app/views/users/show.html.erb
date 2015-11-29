@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <table class="table">
-  <tbody>
+<h2> <%= "#{@user.name}" %> </h2>
+
+<table class="table">
+  <thead>
     <tr>
-      <td> <strong> Place </strong> </td>
-      <td> <strong> Hours </strong> </td>
-    </tr> <br>
+      <th><strong>Place</strong></th>
+      <th><strong>Hours</strong></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
   	<% Service.all.each do |service| %>
       <% if service.user_id == @user.id %>
         <tr>
@@ -16,9 +21,12 @@
       <% end %>
     <% end %>
       <td> <strong> Total </strong> </td>
-      <td> <strong> <%="#{@user.hours}" %> </strong> </td> <br>
+      <td> <strong> <%="#{@user.hours}" %> </strong> </td>
+  </tbody>
+</table>
 
-  </table>
-</p>
-
-<td><%= link_to 'Add Service', '/services/new' %></td>
+<% if current_user.isAdmin == false %>
+  <td><%= link_to 'Add Service', '/services/new' %></td>
+<% else %>
+  <td><%= link_to 'Back', '/users' %></td>
+<% end %>

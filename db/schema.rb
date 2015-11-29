@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20151128013151) do
     t.string   "description"
     t.float    "hours"
     t.date     "date"
+    t.boolean  "approved"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20151128013151) do
     t.string   "email"
     t.string   "password"
     t.integer  "graduatingyear"
+    t.boolean  "isAdmin"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

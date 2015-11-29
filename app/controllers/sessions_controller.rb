@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user && user.password == params[:password]
       session[:user_id] = user.id
-      redirect_to user
+      if user.isAdmin
+        redirect_to '/users'
+      else
+        redirect_to user
+      end
     else
       redirect_to '/login'
     end

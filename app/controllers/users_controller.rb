@@ -2,13 +2,19 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
-  # GET /users.json
   def index
-    @users = User.all
+    if logged_in?
+      if current_user.isAdmin
+        @users = User.all
+      else
+        redirect_to current_user
+      end
+    else
+      redirect_to '/'
+    end
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
   end
 
@@ -25,6 +31,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.hours = 0
+    @user.isAdmin = false
 
     if @user.save
       session[:user_id] = @user.id
@@ -35,7 +42,6 @@ class UsersController < ApplicationController
   end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
       redirect_to @user, notice: 'User was successfully updated.'
@@ -45,7 +51,6 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     reset_session
@@ -60,6 +65,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :password)
+      params.require(:user).permit(:name, :password, :graduatingyear, :student_id, :email)
     end
 end

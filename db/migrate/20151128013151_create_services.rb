@@ -5,6 +5,7 @@ class CreateServices < ActiveRecord::Migration
       t.string :description
       t.float :hours
       t.date :date
+      t.boolean :approved
 
       t.references :user
 
