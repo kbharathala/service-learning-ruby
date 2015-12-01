@@ -10,5 +10,9 @@
   <%= @service.hours %>
 </p>
 
-<%= link_to 'Edit', edit_service_path(@service) %> | <%= link_to 'Destroy', @service, method: :delete, data: { confirm: 'Are you sure?' } %> </td><br>
-<%= link_to 'Back', "/users/#{current_user.id}" %>
+<% if current_user.isAdmin == false %>
+	<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %> | 
+<% end %>
+<%= link_to 'Back', "/users/#{@service.user_id}" %>
+
+

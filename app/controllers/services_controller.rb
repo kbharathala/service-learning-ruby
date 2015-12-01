@@ -4,6 +4,11 @@ class ServicesController < ApplicationController
   # GET /services
   def index
     @services = Service.all
+    if current_user.isAdmin?
+      redirect_to "/users"
+    else
+      redirect_to "/users/#{current_user.id}"
+    end
   end
 
   # GET /services/1
@@ -17,6 +22,7 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
+    redirect_to "/services/#{params[:id]}"
   end
 
   # POST /services
