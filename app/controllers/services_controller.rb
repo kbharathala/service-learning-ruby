@@ -28,13 +28,14 @@ class ServicesController < ApplicationController
   # POST /services
   def create
     @service = Service.new(service_params)
+    @service.approved = false
     @user = current_user
     @service.user_id = @user.id
     @user.hours = @user.hours + @service.hours
 
     if @service.save
       @user.save
-      redirect_to @user, notice: 'Service was successfully created.'
+      redirect_to @user
     else
       render :new
     end
@@ -43,7 +44,7 @@ class ServicesController < ApplicationController
   # PATCH/PUT/services/1
   def update
     if @service.update(service_params)
-      redirect_to @service, notice: 'Service was successfully updated.'
+      redirect_to @service
     else
       render :edit
     end
@@ -55,7 +56,7 @@ class ServicesController < ApplicationController
     @user = current_user
     @user.hours = @user.hours - @service.hours
     @user.save
-    redirect_to @user, notice: 'Service was successfully destroyed.'
+    redirect_to @user
   end
 
   private
@@ -66,6 +67,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:place, :hours)
+      params.require(:service).permit(:placeName, :hours, :description)
     end
 end

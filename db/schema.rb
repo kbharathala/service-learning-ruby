@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20151128013151) do
 
   create_table "services", force: :cascade do |t|
-    t.string   "place"
+    t.string   "placeName"
     t.string   "description"
     t.float    "hours"
     t.date     "date"

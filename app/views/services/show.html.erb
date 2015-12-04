@@ -1,13 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Place:</strong>
-  <%= @service.place %>
+  <strong>Place Name:</strong>
+  <%= @service.placeName %>
 </p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @service.placeAddres %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @service.placePhone %>
+</p>
+
+<br> <br>
 
 <p>
   <strong>Hours:</strong>
   <%= @service.hours %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @service.description %>
 </p>
 
 <% if current_user.isAdmin == false %>
