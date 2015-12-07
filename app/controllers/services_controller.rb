@@ -1,6 +1,18 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
+
+  helper_method :approve
+
+  def approve
+    if current_user.isAdmin?
+      @service = Service.find(params[:id])
+      @service.approved = true
+      @service.save
+    end
+    redirect_to "/users"
+  end
+
   # GET /services
   def index
     @services = Service.all

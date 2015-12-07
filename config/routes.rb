@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  get 'services/:id/approve' => 'services#approve'
+
   get 'signup' => 'users#new'
 
   # Example of regular route:
