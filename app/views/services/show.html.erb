@@ -17,7 +17,7 @@
 
 <% if current_user.isAdmin == false %>
 	<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %> | 
-<% else %>
+<% elsif @service.approved == false %>
     <%= link_to 'Approve', "/services/#{params[:id]}/approve" %>
 <% end %>
 <%= link_to 'Back', "/users/#{@service.user_id}" %>

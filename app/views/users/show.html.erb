@@ -15,7 +15,11 @@
   <tbody>
   	<% Service.all.each do |service| %>
       <% if service.user_id == @user.id %>
-        <tr>
+        <% if service.approved == false %>
+          <tr bgcolor="#FFBBBB">
+        <% else %>
+          <tr>
+        <% end %>
           <td><%= link_to("#{service.placeName}", service)%></td>
           <td><%= service.approved %></td>
           <td><%= service.hours %></td>

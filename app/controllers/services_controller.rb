@@ -8,9 +8,12 @@ class ServicesController < ApplicationController
     if current_user.isAdmin?
       @service = Service.find(params[:id])
       @service.approved = true
+      @user = User.find(@service.user_id)
+      @user.hours = @user.hours + @service.hours
+      @user.save
       @service.save
     end
-    redirect_to "/users"
+    redirect_to "/users/#{@user.id}"
   end
 
   # GET /services
@@ -43,7 +46,6 @@ class ServicesController < ApplicationController
     @service.approved = false
     @user = current_user
     @service.user_id = @user.id
-    @user.hours = @user.hours + @service.hours
 
     if @service.save
       @user.save
