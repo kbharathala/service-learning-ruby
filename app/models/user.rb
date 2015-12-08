@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :student_id, presence: true, uniqueness: true
+  validates :student_id, presence: true
   validates :graduatingyear, presence: true
 
   has_many :services, dependent: :destroy
