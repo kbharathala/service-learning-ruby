@@ -13,7 +13,11 @@
   <tbody>
     <% @users.each do |user| %>
       <% if user.id != current_user.id %>
-        <tr>
+        <% if user.unapproved == 0 %>
+          <tr>
+        <% else %>
+          <tr bgcolor="#FFBBBB">
+        <% end %>
           <td><%= link_to("#{user.name}", user) %></td>
           <td><%= user.student_id %></td>
           <td><%= user.hours %></td>

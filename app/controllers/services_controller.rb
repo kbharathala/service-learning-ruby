@@ -10,6 +10,7 @@ class ServicesController < ApplicationController
       @service.approved = true
       @user = User.find(@service.user_id)
       @user.hours = @user.hours + @service.hours
+      @user.unapproved -= 1
       @user.save
       @service.save
     end
@@ -46,6 +47,7 @@ class ServicesController < ApplicationController
     @service.approved = false
     @user = current_user
     @service.user_id = @user.id
+    @user.unapproved += 1
 
     if @service.save
       @user.save

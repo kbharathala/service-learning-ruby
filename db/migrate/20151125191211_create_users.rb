@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password
       t.integer :graduatingyear
       t.boolean :isAdmin
+      t.integer :unapproved
 
       t.timestamps null: false
     end

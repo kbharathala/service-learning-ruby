@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.hours = 0
     @user.isAdmin = false
+    @user.unapproved = 0
 
     if @user.save
       session[:user_id] = @user.id

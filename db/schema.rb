@@ -15,13 +15,16 @@ ActiveRecord::Schema.define(version: 20151128013151) do
 
   create_table "services", force: :cascade do |t|
     t.string   "placeName"
+    t.string   "placeAddress"
+    t.string   "placePhone"
     t.string   "description"
+    t.string   "impact"
     t.float    "hours"
     t.date     "date"
     t.boolean  "approved"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -32,6 +35,7 @@ ActiveRecord::Schema.define(version: 20151128013151) do
     t.string   "password"
     t.integer  "graduatingyear"
     t.boolean  "isAdmin"
+    t.integer  "unapproved"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
